@@ -14,6 +14,7 @@ export default function Header() {
           <Image
             src='http://jennexplores.com/wp-content/uploads/2015/09/Instagram_logo_black.png'
             alt='Logo'
+            sizes='33vw'
             fill
             className='object-contain'
           />
@@ -22,6 +23,7 @@ export default function Header() {
           <Image
             src='https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/1200px-Instagram_logo_2022.svg.png'
             alt='Logo'
+            sizes='33vw'
             fill
             className='object-contain'
           />
@@ -48,6 +50,7 @@ export default function Header() {
               src='https://avatars.githubusercontent.com/u/11988465?v=4'
               alt=''
               className='rounded-full'
+              sizes='33vw'
               fill
             />
           </div>
