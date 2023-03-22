@@ -8,6 +8,7 @@ const nextConfig = {
       'jennexplores.com',
       'upload.wikimedia.org',
       'avatars.githubusercontent.com',
+      'i.pravatar.cc',
     ],
   },
 };
