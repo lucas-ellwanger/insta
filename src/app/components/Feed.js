@@ -24,7 +24,7 @@ export default function Feed() {
         <Posts />
       </section>
 
-      <section className='hidden ml-2 xl:ml-6 2xl:ml-10 lg:inline-grid lg:col-span-1'>
+      <section className='hidden ml-2 xl:ml-6 lg:inline-grid lg:col-span-1'>
         <div className='fixed w-[380px]'>
           {/* Mini Profile */}
           <MiniProfile />

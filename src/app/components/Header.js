@@ -1,16 +1,19 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import {
   MagnifyingGlassIcon,
   PlusCircleIcon,
 } from '@heroicons/react/24/outline';
 import { HomeIcon } from '@heroicons/react/20/solid';
-import { useSession, signIn, signOut } from 'next-auth/react';
-import Link from 'next/link';
+import { useSession, signIn } from 'next-auth/react';
+import { useRecoilState } from 'recoil';
+import { modalState } from 'atom/modalAtom';
 
 export default function Header() {
   const { data: session } = useSession();
+  const [open, setOpen] = useRecoilState(modalState);
 
   return (
     <div className='shadow-sm sticky top-0 bg-white z-30'>
@@ -55,7 +58,10 @@ export default function Header() {
           </Link>
           {session ? (
             <>
-              <PlusCircleIcon className='h-6 cursor-pointer hover:scale-125 transition-transform duration-200 ease-out' />
+              <PlusCircleIcon
+                onClick={() => setOpen(true)}
+                className='h-6 mt-[2px] cursor-pointer hover:scale-125 transition-transform duration-200 ease-out'
+              />
               <div className='relative h-10 w-10 cursor-pointer'>
                 <Image
                   src={session.user.image}

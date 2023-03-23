@@ -1,6 +1,7 @@
 'use client';
 
 import { SessionProvider } from 'next-auth/react';
+import { RecoilRoot } from 'recoil';
 
 import Header from './components/Header';
 import './globals.css';
@@ -14,10 +15,12 @@ export const metadata = {
 export default function RootLayout({ children, session }) {
   return (
     <html lang='en'>
-      <body className='bg-gray-50 min-h-screen'>
+      <body className='bg-gray-50 min-h-screen select-none'>
         <SessionProvider session={session}>
-          <Header />
-          {children}
+          <RecoilRoot>
+            <Header />
+            {children}
+          </RecoilRoot>
         </SessionProvider>
       </body>
     </html>
