@@ -9,7 +9,7 @@ import {
 
 export default function Post({ id, userName, userImg, img, caption }) {
   return (
-    <div className='bg-white my-7 border rounded-md'>
+    <div className='mx-auto bg-white my-7 border rounded-md max-w-2xl'>
       {/* Post Header */}
       <div className='flex items-center p-5'>
         <img
