@@ -32,7 +32,6 @@ export default function Signin() {
             <p className='text-sm italic my-10 text-center'>
               This app was created for learning purposes.
             </p>
-            <p>{provider.id}</p>
             <button
               onClick={() => signIn(provider.id, { callbackUrl: '/' })}
               className='bg-red-400 rounded-lg p-3 text-white hover:bg-red-500 transition-colors ease-out'
