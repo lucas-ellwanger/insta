@@ -3,11 +3,11 @@
 import { signOut, useSession } from 'next-auth/react';
 
 export default function MiniProfile() {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
 
   return (
     <>
-      {session ? (
+      {status === 'authenticated' ? (
         <div className='flex items-center justify-between mt-14 ml-10'>
           <img
             src={session.user.image}
