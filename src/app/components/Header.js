@@ -9,7 +9,7 @@ import {
 import { HomeIcon } from '@heroicons/react/20/solid';
 import { useSession, signIn } from 'next-auth/react';
 import { useRecoilState } from 'recoil';
-import { modalState } from 'atom/modalAtom';
+import { modalState } from '../../../atom/modalAtom';
 
 export default function Header() {
   const { data: session } = useSession();
