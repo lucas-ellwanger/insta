@@ -1,5 +1,5 @@
+import { useSession } from 'next-auth/react';
 import { EllipsisHorizontalIcon } from '@heroicons/react/20/solid';
-
 import {
   HeartIcon,
   ChatBubbleOvalLeftEllipsisIcon,
@@ -8,6 +8,8 @@ import {
 } from '@heroicons/react/24/outline';
 
 export default function Post({ id, userName, userImg, img, caption }) {
+  const { data: session } = useSession();
+
   return (
     <div className='mx-auto bg-white my-7 border rounded-md'>
       {/* Post Header */}
@@ -24,13 +26,17 @@ export default function Post({ id, userName, userImg, img, caption }) {
       {/* Post Image */}
       <img className='object-cover w-full' src={img} alt='' />
 
-      <div className='flex justify-between px-4 pt-4'>
-        <div className='flex space-x-4'>
-          <HeartIcon className='btn' />
-          <ChatBubbleOvalLeftEllipsisIcon className='btn' />
+      {/* Post Buttons */}
+
+      {session && (
+        <div className='flex justify-between px-4 pt-4'>
+          <div className='flex space-x-4'>
+            <HeartIcon className='btn' />
+            <ChatBubbleOvalLeftEllipsisIcon className='btn' />
+          </div>
+          <BookmarkIcon className='btn' />
         </div>
-        <BookmarkIcon className='btn' />
-      </div>
+      )}
 
       {/* Post Comments */}
       <p className='p-5 truncate'>
@@ -39,15 +45,17 @@ export default function Post({ id, userName, userImg, img, caption }) {
       </p>
 
       {/* Post input box */}
-      <form className='flex items-center p-4'>
-        <FaceSmileIcon className='h-7' />
-        <input
-          className='border-none flex-1 focus:ring-0'
-          type='text'
-          placeholder='Enter your comment...'
-        />
-        <button className='text-blue-400 font-bold'>Post</button>
-      </form>
+      {session && (
+        <form className='flex items-center p-4'>
+          <FaceSmileIcon className='h-7' />
+          <input
+            className='border-none flex-1 focus:ring-0'
+            type='text'
+            placeholder='Enter your comment...'
+          />
+          <button className='text-blue-400 font-bold'>Post</button>
+        </form>
+      )}
     </div>
   );
 }
