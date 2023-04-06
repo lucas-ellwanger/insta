@@ -1,22 +1,22 @@
+'use client';
+
+import { useEffect, useState } from 'react';
 import Post from './Post';
+import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
+import { db } from '../../../firebase';
 
 export default function Posts() {
-  const posts = [
-    {
-      id: '1',
-      userName: 'lucasdev',
-      userImg: 'https://avatars.githubusercontent.com/u/11988465?v=4',
-      img: 'https://images.unsplash.com/photo-1679459905598-79db89b707f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
-      caption: 'Nice picture',
-    },
-    {
-      id: '2',
-      userName: 'lucas945',
-      userImg: 'https://avatars.githubusercontent.com/u/11988465?v=4',
-      img: 'https://images.unsplash.com/photo-1679436230537-46111d0c70a9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyOXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
-      caption: 'New picture',
-    },
-  ];
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const unsubscribe = onSnapshot(
+      query(collection(db, 'posts'), orderBy('timestamp', 'desc')),
+      (snapshot) => {
+        setPosts(snapshot.docs);
+      }
+    );
+    return unsubscribe;
+  });
 
   return (
     <div>
@@ -24,10 +24,10 @@ export default function Posts() {
         <Post
           key={post.id}
           id={post.id}
-          userName={post.userName}
-          userImg={post.userImg}
-          img={post.img}
-          caption={post.caption}
+          userName={post.data().username}
+          userImg={post.data().profileImg}
+          img={post.data().image}
+          caption={post.data().caption}
         />
       ))}
     </div>
