@@ -1,4 +1,4 @@
-// 'use client';
+'use client';
 
 import { SessionProvider } from 'next-auth/react';
 import { RecoilRoot } from 'recoil';
@@ -6,11 +6,11 @@ import { RecoilRoot } from 'recoil';
 import Header from './components/Header';
 import './globals.css';
 
-export const metadata = {
-  title: 'Instagram',
-  description:
-    'Instagram clone using NextJS 13, TailwindCSS, Firebase and NextAuth.',
-};
+// export const metadata = {
+//   title: 'Instagram',
+//   description:
+//     'Instagram clone using NextJS 13, TailwindCSS, Firebase and NextAuth.',
+// };
 
 export default function RootLayout({ children, session }) {
   return (
